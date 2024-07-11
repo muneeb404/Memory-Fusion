@@ -118,7 +118,16 @@ button {
 #game-title {
   text-align: center;
   font-family: "Lexend", sans-serif;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   font-size: 3em;
+  font-weight: 700;
   color: #ffffff;
+}
+#game-title-2 {
+  text-align: center;
+  font-family: "Lexend", sans-serif;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  font-weight: 300;
+  color: #31c3f4;
 }

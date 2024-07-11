@@ -6,6 +6,7 @@ const gameContainer = document.querySelector(".game-container");
 const result = document.getElementById("result");
 const controls = document.querySelector(".controls-container");
 const gameTitle = document.getElementById("game-title");
+const gameTitle2 = document.getElementById("game-title-2");
 
 let cards;
 let interval;
@@ -105,10 +106,50 @@ const matrixGenerator = (cardValues, rows = totalRows, cols = totalColumns) => {
   gameContainer.style.gridTemplateColumns = `repeat(${cols}, auto)`;
 
   // Cards
-  cards = document.querySelectorAll(".card-container");
+//   cards = document.querySelectorAll(".card-container");
+//   cards.forEach((card) => {
+//     card.addEventListener("click", () => {
+//       if (!card.classList.contains("matched")) {
+//         card.classList.add("flipped");
+//         if (!firstCard) {
+//           firstCard = card;
+//           firstCardValue = card.getAttribute("data-card-value");
+//         } else {
+//           movesCounter();
+//           secondCard = card;
+//           let secondCardValue = card.getAttribute("data-card-value");
+//           if (firstCardValue == secondCardValue) {
+//             firstCard.classList.add("matched");
+//             secondCard.classList.add("matched");
+//             firstCard = false;
+//             winCount += 1;
+//             if (winCount == totalCardsNo / 2) {
+//               result.innerHTML = `
+//                 <h2>Mubarakaaaaa!!</h2>
+//                 <h2>Tusi Jeet Gye Ho 🎉</h2>
+//                 <h4>Total Moves: ${movesCount}<br>Total Time: ${minutesValue}:${secondsValue}</h4>
+//                 `;
+//               stopGame();
+//             }
+//           } else {
+//             let [tempFirst, tempSecond] = [firstCard, secondCard];
+//             firstCard = false;
+//             secondCard = false;
+//             let delay = setTimeout(() => {
+//               tempFirst.classList.remove("flipped");
+//               tempSecond.classList.remove("flipped");
+//             }, 900);
+//           }
+//         }
+//       }
+//     });
+//   });
+// };
+
+cards = document.querySelectorAll(".card-container");
   cards.forEach((card) => {
     card.addEventListener("click", () => {
-      if (!card.classList.contains("matched")) {
+      if (!card.classList.contains("matched") && !card.classList.contains("flipped")) {
         card.classList.add("flipped");
         if (!firstCard) {
           firstCard = card;
@@ -145,6 +186,7 @@ const matrixGenerator = (cardValues, rows = totalRows, cols = totalColumns) => {
   });
 };
 
+
 //Start game
 startButton.addEventListener("click", () => {
   movesCount = 0;
@@ -152,6 +194,7 @@ startButton.addEventListener("click", () => {
   minutes = 0;
   //controls and buttons visibility
   gameTitle.classList.add("hide");
+  gameTitle2.classList.add("hide");
   controls.classList.add("hide");
   stopButton.classList.remove("hide");
   startButton.classList.add("hide");
@@ -168,6 +211,7 @@ stopButton.addEventListener(
   (stopGame = () => {
     controls.classList.remove("hide");
     gameTitle.classList.remove("hide");
+    gameTitle2.classList.remove("hide");
     stopButton.classList.add("hide");
     startButton.classList.remove("hide");
     clearInterval(interval);
