@@ -187,6 +187,7 @@ button {
 
   .game-container {
     grid-template-columns: repeat(4, auto) !important; 
+    justify-content :space-evenly;
   }
 
   .card-container {
