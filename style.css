@@ -4,9 +4,13 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 body {
-  background-color: #1919f9;
+  background-color: #0044ff;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
+
 .wrapper {
   box-sizing: content-box;
   width: 34.87em;
@@ -18,26 +22,32 @@ body {
   top: 50%;
   border-radius: 0.6em;
   box-shadow: 0 0.9em 2.8em rgba(86, 66, 0, 0.2);
+  max-width: 100vw; /* Ensure it doesn't overflow screen width */
 }
+
 .game-container {
   position: relative;
   width: 100%;
   display: grid;
   gap: 0.7em;
 }
+
 .stats-container {
   text-align: right;
   margin-bottom: 1.2em;
 }
+
 .stats-container span {
   font-weight: 600;
 }
+
 .card-container {
   position: relative;
   width: 5.1em;
   height: 5.1em;
   cursor: pointer;
 }
+
 .card-before,
 .card-after {
   position: absolute;
@@ -51,38 +61,45 @@ body {
   transition: transform 0.7s ease-out;
   backface-visibility: hidden;
 }
+
 .card-before {
   background-color: #31c3f4;
   font-size: 2.8em;
   font-weight: 600;
 }
+
 .card-after {
   background-color: #ffffff;
   transform: rotateY(180deg);
 }
+
 .card-container.flipped .card-before {
   transform: rotateY(180deg);
 }
+
 .card-container.flipped .card-after {
   transform: rotateY(0deg);
 }
-.controls-container {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  background-color: #1919f9;
-  top: 0;
-}
+
+  .controls-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #0044ff;
+    top: 0;
+  }
+
 button {
   border: none;
   border-radius: 0.3em;
   padding: 1em 1.5em;
   cursor: pointer;
 }
+
 #stop {
   font-size: 1.1em;
   display: block;
@@ -90,31 +107,39 @@ button {
   background-color: #000000;
   color: #ffffff;
 }
+
 .controls-container button {
   font-size: 1.3em;
   box-shadow: 0 0.6em 2em rgba(86, 66, 0, 0.2);
+  color: white;
+  background-color: limegreen;
 }
+
 .hide {
   display: none;
 }
+
 #result {
   text-align: center;
   color: #ffffff;
 }
+
 #result h2 {
   color: #e2ff09;
   font-size: 2.5em;
 }
+
 #result h4 {
   font-size: 1.8em;
   margin: 0.6em 0 1em 0;
 }
 
-.image{
+.image {
   width: 80%;
   height: 80%;
   object-fit: cover;
 }
+
 #game-title {
   text-align: center;
   font-family: "Lexend", sans-serif;
@@ -123,6 +148,7 @@ button {
   font-weight: 700;
   color: #ffffff;
 }
+
 #game-title-2 {
   text-align: center;
   font-family: "Lexend", sans-serif;
@@ -130,4 +156,49 @@ button {
   font-size: 1.5em;
   font-weight: 300;
   color: #31c3f4;
+}
+
+/* Media Queries */
+
+/* For tablets and medium screens */
+@media (max-width: 768px) {
+  .wrapper {
+    width: 90%;
+    padding: 1.5em 2em;
+  }
+
+  .game-container {
+    grid-template-columns: repeat(4, auto) ; 
+  }
+
+  .card-container {
+    width: 4.5em;
+    height: 4.5em;
+  }
+}
+
+/* For mobile phones */
+@media (max-width: 480px) {
+
+  .wrapper {
+    width: 95%;
+    padding: 1em;
+  }
+
+  .game-container {
+    grid-template-columns: repeat(4, auto) !important; 
+  }
+
+  .card-container {
+    width: 3.5em;
+    height: 3.5em;
+  }
+
+  #game-title {
+    font-size: 2em;
+  }
+
+  #game-title-2 {
+    font-size: 1.2em;
+  }
 }
